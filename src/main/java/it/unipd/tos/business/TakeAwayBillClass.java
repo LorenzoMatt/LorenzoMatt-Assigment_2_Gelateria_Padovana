@@ -3,9 +3,11 @@
 ////////////////////////////////////////////////////////////////////
 package it.unipd.tos.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.unipd.tos.business.exception.TakeAwayBillException;
+import it.unipd.tos.model.ItemType;
 import it.unipd.tos.model.MenuItem;
 
 public class TakeAwayBillClass implements TakeAwayBill {
@@ -20,11 +22,10 @@ public class TakeAwayBillClass implements TakeAwayBill {
         if(itemsOrdered.contains(null)) {
           throw new TakeAwayBillException("La lista contiene elementi nulli"); 
         }
-        
-        for(MenuItem item:itemsOrdered)
-            {
+        for(MenuItem item:itemsOrdered){
             total+=item.getPrice();
-            }
-        return total;
         }
+
+        return total;
+    }
 }
