@@ -6,11 +6,9 @@ package it.unipd.tos.model;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import it.unipd.tos.model.ItemType;
-import it.unipd.tos.model.MenuItem;
 
 public class MenuItemTest {
 
