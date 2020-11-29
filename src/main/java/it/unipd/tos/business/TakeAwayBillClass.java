@@ -42,6 +42,8 @@ public class TakeAwayBillClass implements TakeAwayBill {
         return total;
     }
 
+
+
     private double scontogelati_budini(double gelati_budini,double total) {
         if(gelati_budini>50.0D)
         {

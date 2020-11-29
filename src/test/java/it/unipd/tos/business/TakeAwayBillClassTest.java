@@ -73,6 +73,12 @@ public class TakeAwayBillClassTest {
         }
         price=takeAwayBillClass.getOrderPrice(itemsOrdered,new User(1, 30));
     }
+    @Test
+    public void testOrdineSuperiore10Euro() throws TakeAwayBillException {
+        itemsOrdered.add(new MenuItem(ItemType.Gelati, "fragola", 2.0D));
+        itemsOrdered.add(new MenuItem(ItemType.Bevande, "coca", 2.0D));
+        assertEquals(4.5D,takeAwayBillClass.getOrderPrice(itemsOrdered, new User(2, 19)),0D);
+    }
 
 
    
