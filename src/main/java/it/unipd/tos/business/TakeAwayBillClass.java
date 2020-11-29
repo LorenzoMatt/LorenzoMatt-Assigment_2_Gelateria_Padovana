@@ -39,10 +39,12 @@ public class TakeAwayBillClass implements TakeAwayBill {
         }
         total=scontogelati(gelati,total,itemsOrdered);
         total=scontogelati_budini(gelati_budini,total);
-        return total;
+        return commissioni(total);
     }
 
-
+    private double commissioni(double total) {
+        return total + ((total>=10.0D) ? 0 : 0.5D);
+    }
 
     private double scontogelati_budini(double gelati_budini,double total) {
         if(gelati_budini>50.0D)
