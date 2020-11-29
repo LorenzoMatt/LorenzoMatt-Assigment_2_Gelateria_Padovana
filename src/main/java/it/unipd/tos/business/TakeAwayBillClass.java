@@ -23,7 +23,9 @@ public class TakeAwayBillClass implements TakeAwayBill {
         }
         if(itemsOrdered.contains(null)) {
           throw new TakeAwayBillException("La lista contiene elementi nulli"); 
-        }        
+        }
+        max30ordini(itemsOrdered.size());
+        
         for(MenuItem item:itemsOrdered){
             total+=item.getPrice();
             if(item.getItemType()==ItemType.Gelati)
@@ -62,6 +64,12 @@ public class TakeAwayBillClass implements TakeAwayBill {
         }
         return total;
     }
-
+    private Throwable max30ordini(int size) throws TakeAwayBillException {
+        if(size>30)
+        {
+             throw new TakeAwayBillException("numero di ordini consentito di 30 è stato superato");
+        }
+        return null;
+    }
 }
 
