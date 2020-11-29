@@ -16,23 +16,36 @@ public class TakeAwayBillClass implements TakeAwayBill {
     public double getOrderPrice(List<MenuItem> itemsOrdered, User user) 
             throws TakeAwayBillException {
         double total=0;
+        int gelati=0;
         if(itemsOrdered == null) {
             throw new TakeAwayBillException("La lista inserita è nulla."); 
         }
         if(itemsOrdered.contains(null)) {
           throw new TakeAwayBillException("La lista contiene elementi nulli"); 
         }
-        int gelati=0;
+        
         for(MenuItem item:itemsOrdered){
             total+=item.getPrice();
             if(item.getItemType()==ItemType.Gelati)
-                {gelati++;}
+            {
+                gelati++;
+            }
+           
         }
+        total=scontogelati(gelati,total,itemsOrdered);
+        return total;
+    }
+
+
+    private double scontogelati(int gelati,double total,
+            List<MenuItem> itemsOrdered){
         if(gelati>=5)
         {
             double min=Integer.MAX_VALUE;
             for(MenuItem item:itemsOrdered) {
+                if(item.getItemType()==ItemType.Gelati) {
                 min=item.getPrice()<min ? item.getPrice():min;
+                }
             }
             total-=(min/2);
         }

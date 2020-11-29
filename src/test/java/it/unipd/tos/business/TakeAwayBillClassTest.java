@@ -52,6 +52,18 @@ public class TakeAwayBillClassTest {
         itemsOrdered.add(new MenuItem(ItemType.Gelati, "pluto", 2.0D));
         assertEquals(22.0D, takeAwayBillClass.getOrderPrice(itemsOrdered, new User(1,19)),0D);
     }
+    
+    @Test
+    public void testScontoGelatiBudini50Euro() throws TakeAwayBillException {
+        for(int i=0;i<10;i++)
+        {
+            itemsOrdered.add(new MenuItem(ItemType.Budini, "puffo", 4.0D));
+            itemsOrdered.add(new MenuItem(ItemType.Gelati, "mela", 4.0D));
+            itemsOrdered.add(new MenuItem(ItemType.Bevande, "acqua", 1.0D));
+        }
+        assertEquals(79.2D, takeAwayBillClass.getOrderPrice(itemsOrdered, new User(1, 20)),1.0D);
+
+    }
 
    
 }
