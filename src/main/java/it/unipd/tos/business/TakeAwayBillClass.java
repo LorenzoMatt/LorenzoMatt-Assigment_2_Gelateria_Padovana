@@ -22,10 +22,20 @@ public class TakeAwayBillClass implements TakeAwayBill {
         if(itemsOrdered.contains(null)) {
           throw new TakeAwayBillException("La lista contiene elementi nulli"); 
         }
+        int gelati=0;
         for(MenuItem item:itemsOrdered){
             total+=item.getPrice();
+            if(item.getItemType()==ItemType.Gelati)
+                {gelati++;}
         }
-
+        if(gelati>=5)
+        {
+            double min=Integer.MAX_VALUE;
+            for(MenuItem item:itemsOrdered) {
+                min=item.getPrice()<min ? item.getPrice():min;
+            }
+            total-=(min/2);
+        }
         return total;
     }
 }
