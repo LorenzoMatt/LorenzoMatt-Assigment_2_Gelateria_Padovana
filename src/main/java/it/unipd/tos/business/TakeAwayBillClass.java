@@ -23,8 +23,7 @@ public class TakeAwayBillClass implements TakeAwayBill {
         }
         if(itemsOrdered.contains(null)) {
           throw new TakeAwayBillException("La lista contiene elementi nulli"); 
-        }
-        
+        }        
         for(MenuItem item:itemsOrdered){
             total+=item.getPrice();
             if(item.getItemType()==ItemType.Gelati)
@@ -50,8 +49,7 @@ public class TakeAwayBillClass implements TakeAwayBill {
     }
 
 
-    private double scontogelati(int gelati,double total,
-            List<MenuItem> itemsOrdered){
+    private double scontogelati(int gelati,double total, List<MenuItem> itemsOrdered){
         if(gelati>=5)
         {
             double min=Integer.MAX_VALUE;
@@ -64,4 +62,6 @@ public class TakeAwayBillClass implements TakeAwayBill {
         }
         return total;
     }
+
 }
+
