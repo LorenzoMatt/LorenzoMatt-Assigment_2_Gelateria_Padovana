@@ -17,6 +17,7 @@ public class TakeAwayBillClass implements TakeAwayBill {
             throws TakeAwayBillException {
         double total=0;
         int gelati=0;
+        double gelati_budini=0;
         if(itemsOrdered == null) {
             throw new TakeAwayBillException("La lista inserita è nulla."); 
         }
@@ -29,10 +30,22 @@ public class TakeAwayBillClass implements TakeAwayBill {
             if(item.getItemType()==ItemType.Gelati)
             {
                 gelati++;
+                gelati_budini+=item.getPrice();
             }
-           
+            if (item.getItemType()==ItemType.Budini) {
+                gelati_budini+=item.getPrice();
+            }
         }
         total=scontogelati(gelati,total,itemsOrdered);
+        total=scontogelati_budini(gelati_budini,total);
+        return total;
+    }
+
+    private double scontogelati_budini(double gelati_budini,double total) {
+        if(gelati_budini>50.0D)
+        {
+            total-=(gelati_budini*0.1);
+        }
         return total;
     }
 
