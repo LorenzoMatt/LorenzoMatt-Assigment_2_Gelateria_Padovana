@@ -60,7 +60,8 @@ public class TakeAwayBillClass implements TakeAwayBill {
  */
     private double regaloMinorenni(double totale,User user,Orario orario) {
         if(user.getanni()<=18 && OrarioBuonoOrario(orario)) {
-            if(count<=10 && b  &&  !(utentiRegaloMap.containsKey(user.getid()))) // utenti che hanno già avuto un ordine in regalo non lo avranno una seconda volta
+            if(count<=10 && b  &&  !(utentiRegaloMap.containsKey(user.getid()))) 
+                // utenti che hanno già avuto un ordine in regalo non lo avranno una seconda volta
             {
            utentiRegaloMap.put(user.getid(), 0); //aggiunto utente che ha ottenuto il regalo
            count++;
