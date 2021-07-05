@@ -31,7 +31,7 @@ public class MenuItemTest {
 
     @Test
     public void testGetPrice() {
-        assertEquals(2.50, menuItem.getPrice() + 4.00, 0);
+        assertEquals(2.50, menuItem.getPrice(), 0);
     }
 
 }
